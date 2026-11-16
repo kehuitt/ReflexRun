@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="127" height="30" viewBox="0 0 127 30" role="img" aria-labelledby="title">
+  <title id="title">Project Page</title>
+  <rect x=".5" y=".5" width="126" height="29" rx="7.5" fill="#6245d6" stroke="#8f78ee"/>
+  <g fill="none" stroke="#ede6ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+    <circle cx="18" cy="15" r="6.5"/>
+    <ellipse cx="18" cy="15" rx="2.75" ry="6.5"/>
+    <path d="M11.5 15h13"/>
+  </g>
+  <text x="33" y="19.25" fill="#fff" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600">Project Page</text>
+</svg>

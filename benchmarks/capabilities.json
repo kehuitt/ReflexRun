@@ -1,0 +1,743 @@
+{
+  "schemaVersion": 1,
+  "status": "completed",
+  "inlineComparison": {
+    "schemaVersion": 5,
+    "status": "completed",
+    "actualModel": {
+      "model": "gpt-6.1-terra",
+      "provider": "openai",
+      "reasoningEffort": "low"
+    },
+    "application": {
+      "application": "Mailpit",
+      "version": "v1.33.1 compiled with go1.27.3 on darwin/arm64",
+      "binarySha256": "07689c5ee40a18141185282adb616b60ad8aa3c4f04158a14b178c7b5e2efb0e"
+    },
+    "frameworks": {
+      "codex": "codex-cli 0.167.0-alpha.4.1",
+      "playwright": "1.64.1",
+      "playwrightMcp": "0.0.84"
+    },
+    "protocol": {
+      "application": "Official Mailpit binary; SMTP synthetic mail; no site action script",
+      "model": "Original Codex gpt-6.1-terra / low; native Playwright MCP tools",
+      "settleMs": 0,
+      "learning": "Automatic runtime induction from verified typed task goals and trusted before/after state. No model-supplied ranges.",
+      "composition": "For unseen C, the library must match compatible learned steps to typed goals locally. No model planning fallback is configured.",
+      "state": "First C is a different email with neither outcome satisfied. Setup-only API writes are outside task clocks.",
+      "verification": "Every task: exact full mailbox state plus raw-message hashes. Unknown state stops. No model business API access.",
+      "timing": "Queue release through independent exact backend confirmation. Learning/selection and persistence are recorded separately; no timing advantage inferred from fixtures.",
+      "pairing": "Alternate ReflexRun-first and original-first. Fresh mailboxes, matching SMTP data and business goals, same settle and native tools. Each model turn starts in a fresh ephemeral Codex thread. Both arms use identical model instructions and task completion tools for A/B. Both C clocks include planning and any model startup, then stop after exact backend confirmation and return to inbox.",
+      "modelMetrics": "One model call per unique inference_started request attempt in the client rollout trace. Includes failed and cancelled attempts and final responses when requested. Host turns, tool calls, and non-generating connection warmups are excluded.",
+      "modelCountingSource": "https://github.com/openai/codex/blob/main/codex-rs/rollout-trace/src/inference.rs",
+      "throughFirstC": "Wall time from A queue release to C exact readback. Includes A/B completion, admission, planning and C browser execution.",
+      "inputMatch": "SMTP receiving envelopes and generated identifiers differ per isolated mailbox. Both arms have identical business data and each mailbox is checked byte for byte against its own expected state."
+    },
+    "sourceHashes": {
+      "package-lock.json": "42d94c3505f232d9b2ef91fdbb99d095697b6ffd2745d8a9981c2468c5006f85",
+      "package.json": "28aafb21ecb6f455a9407abde1c9865d977f7a8136bfbab739e8af4033308fd1",
+      "scripts/benchmark-capabilities.ts": "679a37eda8ca379911ae3e8940786eb750db73ee5d388b8b6c52de8f788009c5",
+      "scripts/benchmark-mailpit.ts": "e93ca75cccca017443edf54e0f1bd6e956a0cb2db53a3d58c702328a102a05cc",
+      "scripts/live-runtime.ts": "f67d3edcdf86c89f5e72d4251a1d138cc04703c58ef8b7ccc90d6d4905bec680",
+      "scripts/mailpit-evaluation.ts": "66d92b5bceeba196e1419e86b8e392091baf82a4a5942df7bc313447fa82c540",
+      "scripts/showcase-timing.ts": "ad7d91987f964368f0b5cef6f8c335a2b39c39a72cfbd3ae0f75725297b9f004",
+      "src/cli.ts": "e0f5cd8c44c5b5204ea30e70b002cb520a3e9bcb09065610d7408f080e678cc6",
+      "src/index.ts": "5da1081d68e4f01ae9c763aad611d77b8c0ee2ac746aef4d2d4eb2a00f1781c5",
+      "src/journal.ts": "fad8d15ba0189ac68346536e4bfaad7a83f4c05b14b910910bfa12a91496addd",
+      "src/mcp.ts": "a30946f7e1b290b353e721fc5e23257f85a5cfd152ba343683ce82eca339e0f6",
+      "src/memory/action-schema.ts": "f5c5cf60fd2e166e357fa6cbaf97ce4d513e2135d6ae33bacad4e7c8c3ee7dc0",
+      "src/memory/batch.ts": "32167446999099adb60ef4e3d7980023085ab96090e36009671d88bc5c6e5ce7",
+      "src/memory/browser.ts": "99e45dade4bcb3f50ebe166b8914a09e491056234a0f8b879979b12e14361337",
+      "src/memory/callback.ts": "0d71cb5674d3ae44ac99a12f3bc46e678bebe53f5e47efd443abcafd7c691f2f",
+      "src/memory/capabilities.ts": "e137a0848b723c12bef41b31aa2f1da1fb29ff6d08d2e82bf9d83e33e5bb05fd",
+      "src/memory/capture.ts": "0bdcb2c2208d0d16766c2a5f775a18f98a9005ec1765bdee9d59f6a6c3d79d54",
+      "src/memory/compiler.ts": "1a9716af01d52c0f93c3e66d878bb87d8025365ae46628eb93a84036e5592058",
+      "src/memory/composition.ts": "bc1d312e69fe83c305699dfe6910349e3864b038690e0b40199a203a19cafee9",
+      "src/memory/cua-browser.ts": "5446547ec5dee8386656c23bb3b204971715a650b17765237d97dc918be53d06",
+      "src/memory/cua.ts": "fe90b486e1ec60b4b3bfedd809384b26f4064f37ecea13a4a566b1b202164edd",
+      "src/memory/execution.ts": "cb8dfc77bf3344e3e9550ddf65bbc66eeec96bf7ea114721477807d2c1ab3d50",
+      "src/memory/facts.ts": "f8f5937e4d33239aacd2d0e0a345d4997cc91564b3174db63272535fe7f02160",
+      "src/memory/gateway.ts": "f5c6cb74c09998e8c628ab79806fdfe3c8dd811432fac2edddd5ecee26cc099e",
+      "src/memory/index.ts": "b99dde059c574685d40bb382afdd3173000dc65355af541105dcfa7fc1dfb363",
+      "src/memory/mcp.ts": "639a8f62f86ec4c4d3047ac254517b33857e31d423a6698ba82c7d721c6d3a28",
+      "src/memory/program.ts": "80e72af8893b7aabbd6c020b99a57f184ad8e520ba4e71399c2bcc69e02e349a",
+      "src/memory/readback.ts": "5423f36290bab27d2e541dba769b260f78c93132914656406775152a87d18ee6",
+      "src/memory/session.ts": "6bb39e13168027e92cbde4420626c8f1bba1e28f2ff30c5c3479b3467e841804",
+      "src/memory/store.ts": "a6d32b952bebaa7ccf86c33fb00865984ac876a482b1c2b52213174f123695ff",
+      "src/memory/timing.ts": "7a261e1a69f4548d4de2ac9bcb5e5bfa30ee6a47a2d28d12c90e725b5bffcc98",
+      "src/memory/types.ts": "3e59c4ea526485c4aa874c184cd69bd4b91b8565be620e2ff55e8fc2184aa8e9",
+      "src/model/codex.ts": "4c096d0a8453e1086cf0bde53652767fa70940a0922733ecaa69e763a1c22983",
+      "src/policy.ts": "f90dc950c6a36b2c235ac8b4cad8a3f58ec24cd5b917defe2a077c96908381ba",
+      "src/proxy/index.ts": "295da96cc38a4710220fb0d6c20d9c164eacd2d3cccaad60b7f0b2b4619a89f6",
+      "src/proxy/playwright.ts": "047d215d8bec0e7761ea4b21b307ff0f866aa78263038ce296f2470dae716b1b",
+      "src/proxy/server.ts": "c3958aae18cbc8b1fd73ef860303b4ee4029197a2c3861a3e02d872962ec92d3",
+      "src/setup.ts": "869a10bebaf23cfda325fe3ead2c06be01febcea1758fab5e80146487fc1dae8",
+      "src/types.ts": "a2299330ff2f24a3bad082b683d9a6be380805aebc260c63b3e70c1735dc12ee"
+    },
+    "reproduction": {
+      "entry": "scripts/benchmark-capabilities.ts",
+      "flags": [
+        "--paired",
+        "--auto",
+        "--rounds",
+        "4",
+        "--settle-ms",
+        "0"
+      ],
+      "entrySha256": "98935140a76a92e9f2c23d5d0a3e13f63938750c14dc1bc9f514a7d06a8e9daa",
+      "note": "Recorded with the equivalent isolated harness identified in sourceHashes. The source entry adds storage-audit evidence after C is timed."
+    },
+    "rawReportSha256": "f827bcd3f3dc47d1566ad3a58dd19c4c61160e9e80de8f9ab6e666f0e9bb464a",
+    "attempts": [
+      {
+        "round": 1,
+        "order": [
+          "reflex",
+          "baseline"
+        ],
+        "included": true
+      },
+      {
+        "round": 2,
+        "order": [
+          "baseline",
+          "reflex"
+        ],
+        "included": true
+      },
+      {
+        "round": 3,
+        "order": [
+          "reflex",
+          "baseline"
+        ],
+        "included": true
+      },
+      {
+        "round": 4,
+        "order": [
+          "baseline",
+          "reflex"
+        ],
+        "included": true
+      }
+    ],
+    "recoveredModelToolErrors": [
+      {
+        "round": 2,
+        "method": "reflex",
+        "stage": "A.read",
+        "tool": "browser_click"
+      }
+    ],
+    "rounds": [
+      {
+        "round": 1,
+        "order": [
+          "reflex",
+          "baseline"
+        ],
+        "completed": true,
+        "results": {
+          "baseline": {
+            "businessReadyMs": 30965.603208,
+            "modelCalls": 14,
+            "learningWallMs": 38955.170207999996,
+            "modelCallAudit": {
+              "A": {
+                "completed": 4,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "B": {
+                "completed": 14,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "C": {
+                "completed": 13,
+                "cancelled": 1,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 69920.773416,
+              "modelCalls": 33
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 12907.009750000005,
+                "modelCalls": 5
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 26037.945792000006,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 30965.603208,
+                "modelCalls": 14
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-1-baseline.webm",
+              "sha256": "371c16be08243623068498ff016896960352c9acde1b5e0982fc9aa611d891b9",
+              "bytes": 4180691
+            }
+          },
+          "reflex": {
+            "businessReadyMs": 606.2433330000058,
+            "modelCalls": 0,
+            "learningWallMs": 43789.551792,
+            "modelCallAudit": {
+              "A": {
+                "completed": 10,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "B": {
+                "completed": 14,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "C": {
+                "completed": 0,
+                "cancelled": 0,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 44395.795125000004,
+              "modelCalls": 24
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 18671.175875,
+                "modelCalls": 10
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 24985.821708000003,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 606.2433330000058,
+                "modelCalls": 0
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-1-reflex.webm",
+              "sha256": "7eecfed455f123e4e7657a9f3cf4afe45c6c23be52697f4af3f3250d3817e2e4",
+              "bytes": 3156654
+            },
+            "planSource": "local",
+            "reuse": {
+              "uniqueStepsStored": 6,
+              "workflowStepReferences": 10,
+              "capabilityStepReferences": 7,
+              "stepsSharedByAandB": 4,
+              "stepsSharedByWorkflowsAndLibrary": 6,
+              "uniqueStepsInExecutedCapabilities": 6,
+              "reusedEffects": {
+                "A": [
+                  "Read"
+                ],
+                "B": [
+                  "Tags"
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "baseline",
+          "reflex"
+        ],
+        "completed": true,
+        "results": {
+          "baseline": {
+            "businessReadyMs": 17623.11587499999,
+            "modelCalls": 9,
+            "learningWallMs": 45958.15150000001,
+            "modelCallAudit": {
+              "A": {
+                "completed": 9,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "B": {
+                "completed": 13,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "C": {
+                "completed": 9,
+                "cancelled": 0,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 63581.267374999996,
+              "modelCalls": 33
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 18875.2365,
+                "modelCalls": 10
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 27072.72095799999,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 17623.11587499999,
+                "modelCalls": 9
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-2-baseline.webm",
+              "sha256": "803efb668c2e72ec19dc22f35301a3700bbc0bb580128b87c8a968045e642b14",
+              "bytes": 4209171
+            }
+          },
+          "reflex": {
+            "businessReadyMs": 560.1375000000116,
+            "modelCalls": 0,
+            "learningWallMs": 33896.444791999995,
+            "modelCallAudit": {
+              "A": {
+                "completed": 6,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "B": {
+                "completed": 8,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "C": {
+                "completed": 0,
+                "cancelled": 0,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 34456.58229200001,
+              "modelCalls": 14
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 13981.804082999995,
+                "modelCalls": 6
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 19658.523874999984,
+                "modelCalls": 8
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 560.1375000000116,
+                "modelCalls": 0
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-2-reflex.webm",
+              "sha256": "bb221c45f9f0b5aa8bc26e7735571f0a670dc32bbbf190d0738c6082f657ae22",
+              "bytes": 2826183
+            },
+            "planSource": "local",
+            "reuse": {
+              "uniqueStepsStored": 7,
+              "workflowStepReferences": 9,
+              "capabilityStepReferences": 8,
+              "stepsSharedByAandB": 2,
+              "stepsSharedByWorkflowsAndLibrary": 7,
+              "uniqueStepsInExecutedCapabilities": 5,
+              "reusedEffects": {
+                "A": [
+                  "Read"
+                ],
+                "B": [
+                  "Tags"
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "reflex",
+          "baseline"
+        ],
+        "completed": true,
+        "results": {
+          "baseline": {
+            "businessReadyMs": 24547.33795800002,
+            "modelCalls": 12,
+            "learningWallMs": 46584.93854200002,
+            "modelCallAudit": {
+              "A": {
+                "completed": 9,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "B": {
+                "completed": 13,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "C": {
+                "completed": 11,
+                "cancelled": 1,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 71132.27650000004,
+              "modelCalls": 36
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 18111.268125000002,
+                "modelCalls": 10
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 28459.77262500004,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 24547.33795800002,
+                "modelCalls": 12
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-3-baseline.webm",
+              "sha256": "8f4f869f13e78239edda7056ea6df518ce27836bef4b266583d4755eecee294f",
+              "bytes": 4612814
+            }
+          },
+          "reflex": {
+            "businessReadyMs": 718.8213749999995,
+            "modelCalls": 0,
+            "learningWallMs": 47868.50429099999,
+            "modelCallAudit": {
+              "A": {
+                "completed": 10,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "B": {
+                "completed": 14,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "C": {
+                "completed": 0,
+                "cancelled": 0,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 48587.32566599999,
+              "modelCalls": 24
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 22109.814583,
+                "modelCalls": 10
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 25603.52016700004,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 718.8213749999995,
+                "modelCalls": 0
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-3-reflex.webm",
+              "sha256": "6fc2c9e8c1b7b9bc3392d6ac5f1051ceddeec8af852f09e70db9482969fd9079",
+              "bytes": 3389550
+            },
+            "planSource": "local",
+            "reuse": {
+              "uniqueStepsStored": 6,
+              "workflowStepReferences": 10,
+              "capabilityStepReferences": 7,
+              "stepsSharedByAandB": 4,
+              "stepsSharedByWorkflowsAndLibrary": 6,
+              "uniqueStepsInExecutedCapabilities": 6,
+              "reusedEffects": {
+                "A": [
+                  "Read"
+                ],
+                "B": [
+                  "Tags"
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "baseline",
+          "reflex"
+        ],
+        "completed": true,
+        "results": {
+          "baseline": {
+            "businessReadyMs": 29700.465333,
+            "modelCalls": 16,
+            "learningWallMs": 43771.911792,
+            "modelCallAudit": {
+              "A": {
+                "completed": 5,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "B": {
+                "completed": 13,
+                "cancelled": 1,
+                "failed": 0
+              },
+              "C": {
+                "completed": 15,
+                "cancelled": 1,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 73472.377125,
+              "modelCalls": 36
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 14672.406916999957,
+                "modelCalls": 6
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 29084.08387500001,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 29700.465333,
+                "modelCalls": 16
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-4-baseline.webm",
+              "sha256": "ff3308bbdf063d62f0d8c4250d73fc04c2deae184c27d3a3bc3e342721057fe3",
+              "bytes": 4667859
+            }
+          },
+          "reflex": {
+            "businessReadyMs": 619.9751669999678,
+            "modelCalls": 0,
+            "learningWallMs": 44012.387583,
+            "modelCallAudit": {
+              "A": {
+                "completed": 10,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "B": {
+                "completed": 14,
+                "cancelled": 0,
+                "failed": 0
+              },
+              "C": {
+                "completed": 0,
+                "cancelled": 0,
+                "failed": 0
+              }
+            },
+            "throughFirstC": {
+              "elapsedMs": 44632.36274999997,
+              "modelCalls": 24
+            },
+            "tasks": [
+              {
+                "key": "A.read",
+                "businessReadyMs": 18089.086499999976,
+                "modelCalls": 10
+              },
+              {
+                "key": "B.tag",
+                "businessReadyMs": 25704.91283300001,
+                "modelCalls": 14
+              },
+              {
+                "key": "C.state-1",
+                "businessReadyMs": 619.9751669999678,
+                "modelCalls": 0
+              }
+            ],
+            "verifiedTasks": [
+              "A.read",
+              "B.tag",
+              "C.state-1"
+            ],
+            "recording": {
+              "filename": "capabilities-4-reflex.webm",
+              "sha256": "4703a9625c22fd9b81a9b4b8e2829063aff778769e4a4063b11747cf7610f064",
+              "bytes": 3167589
+            },
+            "planSource": "local",
+            "reuse": {
+              "uniqueStepsStored": 6,
+              "workflowStepReferences": 10,
+              "capabilityStepReferences": 7,
+              "stepsSharedByAandB": 4,
+              "stepsSharedByWorkflowsAndLibrary": 6,
+              "uniqueStepsInExecutedCapabilities": 6,
+              "reusedEffects": {
+                "A": [
+                  "Read"
+                ],
+                "B": [
+                  "Tags"
+                ]
+              }
+            }
+          }
+        }
+      }
+    ],
+    "summary": {
+      "rounds": 4,
+      "requestedRounds": 4,
+      "baseline": {
+        "medianMs": 27123.90164550001,
+        "maxModelCalls": 16,
+        "medianLearningWallMs": 44865.031646,
+        "medianThroughFirstCMs": 70526.52495800002,
+        "maxModelCallsThroughFirstC": 36
+      },
+      "reflex": {
+        "medianMs": 613.1092499999868,
+        "maxModelCalls": 0,
+        "medianLearningWallMs": 43900.9696875,
+        "medianThroughFirstCMs": 44514.07893749999,
+        "maxModelCallsThroughFirstC": 24
+      },
+      "medianPairedSpeedupC": 41.02766098557328,
+      "samples": [
+        {
+          "round": 1,
+          "results": {
+            "baseline": {
+              "businessReadyMs": 30965.603208,
+              "modelCalls": 14
+            },
+            "reflex": {
+              "businessReadyMs": 606.2433330000058,
+              "modelCalls": 0
+            }
+          }
+        },
+        {
+          "round": 2,
+          "results": {
+            "baseline": {
+              "businessReadyMs": 17623.11587499999,
+              "modelCalls": 9
+            },
+            "reflex": {
+              "businessReadyMs": 560.1375000000116,
+              "modelCalls": 0
+            }
+          }
+        },
+        {
+          "round": 3,
+          "results": {
+            "baseline": {
+              "businessReadyMs": 24547.33795800002,
+              "modelCalls": 12
+            },
+            "reflex": {
+              "businessReadyMs": 718.8213749999995,
+              "modelCalls": 0
+            }
+          }
+        },
+        {
+          "round": 4,
+          "results": {
+            "baseline": {
+              "businessReadyMs": 29700.465333,
+              "modelCalls": 16
+            },
+            "reflex": {
+              "businessReadyMs": 619.9751669999678,
+              "modelCalls": 0
+            }
+          }
+        }
+      ]
+    },
+    "matchedModelTraces": 20
+  }
+}

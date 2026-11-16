@@ -1,0 +1,42 @@
+name: Publish demo to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Stage demo assets only
+        run: |
+          mkdir -p "$RUNNER_TEMP/reflexrun-pages/docs/playground" "$RUNNER_TEMP/reflexrun-pages/benchmarks"
+          cp docs/playground/index.html docs/playground/app.js docs/playground/scenarios.js docs/playground/style.css "$RUNNER_TEMP/reflexrun-pages/docs/playground/"
+          cp docs/demo.mp4 docs/demo-poster.jpg docs/logo.svg "$RUNNER_TEMP/reflexrun-pages/docs/"
+          cp benchmarks/showcase.json benchmarks/capabilities.json "$RUNNER_TEMP/reflexrun-pages/benchmarks/"
+          cp LICENSE "$RUNNER_TEMP/reflexrun-pages/"
+          cat > "$RUNNER_TEMP/reflexrun-pages/index.html" <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0;url=docs/playground/">
+          <title>ReflexRun Demo</title>
+          <a href="docs/playground/">Open the ReflexRun demo</a>
+          HTML
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/reflexrun-pages
+      - uses: actions/deploy-pages@v5
+        id: deployment

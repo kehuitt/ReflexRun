@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f5f7fd" />
+    <meta
+      name="description"
+      content="ReflexRun saves how your Computer Use agent completes a task and reuses the workflow with new inputs."
+    />
+    <title>ReflexRun — Learn by doing. Get better over time.</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#measurements" data-i18n="skip">Skip to the results</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="ReflexRun home">
+        <img class="brand-mark" src="../logo.svg" alt="" width="34" height="34" />ReflexRun
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#measurements" data-i18n="navResults">Comparison</a
+        ><a href="#real-test" data-i18n="navRecord">Watch demo</a
+        ><a href="#playground" data-i18n="navLab">Try it</a
+        ><a href="#install" data-i18n="installTitle">Install ReflexRun</a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button
+        ><button type="button" data-lang="zh" aria-pressed="false">中文</button>
+      </div>
+    </header>
+    <main id="top">
+      <section class="intro" aria-labelledby="hero-title">
+        <h1 id="hero-title">
+          <span data-i18n="heroLine1">Learn by doing.</span><br /><span
+            class="quiet"
+            data-i18n="heroLine2"
+            >Get better over time.</span
+          >
+        </h1>
+        <div class="intro-copy">
+          <p data-i18n="heroIntro">
+            Your agent works as usual. ReflexRun remembers how it completed the task and reuses the
+            workflow with new inputs.
+          </p>
+          <p class="demo-label">
+            <a href="#playground" data-i18n="tryExamples">Try a sample workflow ↗</a>
+          </p>
+        </div>
+      </section>
+      <section id="real-test" class="recording" aria-labelledby="record-title">
+        <div class="section-heading">
+          <h2 id="record-title" data-i18n="recordTitle">ReflexRun in action</h2>
+          <a id="video-link" href="../demo.mp4" hidden data-i18n="videoDownload">Open video ↗</a>
+        </div>
+        <div class="recording-grid">
+          <div class="recording-player">
+            <div id="video-pending" class="video-pending" role="status">
+              <span class="pending-mark" aria-hidden="true">↳</span>
+              <p>Loading video…</p>
+            </div>
+            <video
+              id="demo-video"
+              controls
+              playsinline
+              preload="none"
+              hidden
+              aria-label="ReflexRun real Mailpit experiment"
+            ></video>
+            <nav id="video-chapters" class="video-chapters" aria-label="Video chapters" hidden>
+              <button type="button" data-chapter="replay" data-i18n="chapterReplay">
+                Batch comparison
+              </button>
+              <button type="button" data-chapter="shared" data-i18n="chapterShared" hidden>
+                Shared steps
+              </button>
+              <button type="button" data-chapter="crossTask" data-i18n="chapterCrossTask">
+                First run of task C
+              </button>
+              <a href="../../benchmarks/capabilities.json" data-i18n="capabilityEvidence"
+                >Cross-task data ↗</a
+              >
+            </nav>
+          </div>
+          <section
+            id="measurements"
+            class="measurements evidence-panel"
+            aria-labelledby="evidence-title"
+          >
+            <div class="section-heading">
+              <h3 id="evidence-title" data-i18n="evidenceTitle">Computer Use comparison</h3>
+              <a
+                id="evidence-link"
+                href="../../benchmarks/showcase.json"
+                download
+                hidden
+                data-i18n="downloadEvidence"
+                >Raw results ↗</a
+              >
+            </div>
+            <p id="evidence-context" class="section-intro"></p>
+            <div id="evidence-results" hidden></div>
+          </section>
+        </div>
+      </section>
+
+      <details id="illustration" class="local-illustration">
+        <summary>
+          <span class="illustration-copy">
+            <strong data-i18n="illustrationTitle">Interactive demo</strong>
+            <span data-i18n="illustrationIntro">
+              Run a batch with sample data, then change a button and repair the workflow.
+            </span>
+          </span>
+          <span class="details-toggle" aria-hidden="true">
+            <span class="details-open" data-i18n="illustrationOpen">Open demo</span>
+            <span class="details-close" data-i18n="illustrationClose">Close demo</span>
+          </span>
+        </summary>
+        <section id="playground" class="playground" aria-label="Interactive demo">
+          <div class="scenario-switch" role="group" aria-label="Choose a workflow">
+            <button type="button" data-scenario="expense" aria-pressed="true">
+              <span aria-hidden="true">▤</span><span data-i18n="expense">Expenses</span>
+            </button>
+            <button type="button" data-scenario="invoice" aria-pressed="false">
+              <span aria-hidden="true">◎</span><span data-i18n="invoice">Invoices</span>
+            </button>
+            <button type="button" data-scenario="mail" aria-pressed="false">
+              <span aria-hidden="true">✉</span><span data-i18n="mail">Email</span>
+            </button>
+          </div>
+          <div class="workspace">
+            <div class="workspace-bar">
+              <span id="lab-title"></span
+              ><button type="button" id="reset-button" class="text-button" data-i18n="reset">
+                Reset
+              </button>
+            </div>
+            <div class="workflow-route" aria-label="Local workflow">
+              <div class="route-step" data-flow="input">
+                <span class="route-icon">↗</span><strong data-i18n="routeInputs">New inputs</strong>
+              </div>
+              <span class="route-line" aria-hidden="true"></span>
+              <div class="route-step" data-flow="memory">
+                <span class="route-icon">⌘</span><strong data-i18n="routeMemory">Saved path</strong>
+              </div>
+              <span class="route-line" aria-hidden="true"></span>
+              <div class="route-step" data-flow="result">
+                <span class="route-icon">✓</span
+                ><strong data-i18n="routeResults">Saved results</strong>
+              </div>
+            </div>
+            <div class="lab-grid">
+              <section class="parameters-panel" aria-label="Batch inputs">
+                <form id="parameters-form">
+                  <h2 class="input-heading" data-i18n="batchInputs">Batch inputs</h2>
+                  <div id="common-fields" class="common-fields"></div>
+                  <div class="field">
+                    <label for="batch-values" id="batch-label"></label
+                    ><textarea
+                      id="batch-values"
+                      name="values"
+                      rows="3"
+                      maxlength="1200"
+                      required
+                      spellcheck="false"
+                    ></textarea>
+                  </div>
+                  <p class="input-hint" data-i18n="lineHint">
+                    One item per line. Edit the inputs, then run another batch.
+                  </p>
+                  <button type="submit" id="run-button" class="button button-primary">
+                    <span data-i18n="run">Run this batch</span><span aria-hidden="true">→</span>
+                  </button>
+                </form>
+                <button
+                  type="button"
+                  id="rename-button"
+                  class="button button-secondary"
+                  data-i18n="change"
+                >
+                  Change the page ↻
+                </button>
+                <div id="repair-card" class="repair-card" hidden>
+                  <h3 data-i18n="repairTitle">The save button changed.</h3>
+                  <p id="repair-explanation"></p>
+                  <button
+                    type="button"
+                    id="repair-button"
+                    class="button button-primary"
+                    data-i18n="repair"
+                  >
+                    Repair once & continue
+                  </button>
+                </div>
+              </section>
+              <section class="surface-panel" aria-label="Example business page">
+                <div class="window-chrome">
+                  <span class="window-dot" aria-hidden="true"></span
+                  ><span id="surface-title"></span>
+                </div>
+                <div id="business-surface" class="synthetic-window"></div>
+              </section>
+            </div>
+            <div class="execution-strip">
+              <span id="run-state-icon" aria-hidden="true">○</span>
+              <p id="run-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+          <p class="local-explanation">
+            <a
+              id="practice-link"
+              href="?portal=expense&amp;run=practice"
+              target="_blank"
+              rel="noopener"
+              data-i18n="practice"
+              >Open practice page ↗</a
+            >
+          </p>
+        </section>
+      </details>
+      <section id="install" class="quickstart" aria-labelledby="install-title">
+        <div class="section-heading">
+          <h2 id="install-title" data-i18n="installTitle">Install ReflexRun</h2>
+        </div>
+        <p class="section-intro" data-i18n="installIntro">
+          Requires Node.js 20+, npm and Codex Desktop with Computer Use.
+        </p>
+        <p class="section-intro" data-i18n="checkTools">1. Check your tools.</p>
+        <pre class="install-command"><code>git --version
+node --version
+npm --version</code></pre>
+        <p class="section-intro" data-i18n="cloneSource">2. Clone ReflexRun.</p>
+        <pre class="install-command"><code>git clone https://github.com/kehuitt/ReflexRun.git
+cd ReflexRun</code></pre>
+        <p class="section-intro" data-i18n="zipSource">
+          For a source ZIP, run these commands in the folder containing it.
+        </p>
+        <pre class="install-command"><code>unzip reflexrun.zip
+cd reflexrun</code></pre>
+        <p class="section-intro" data-i18n="installStep">3. Install and verify.</p>
+        <pre
+          class="install-command"
+        ><code>npm run setup:codex &amp;&amp; node dist/src/cli.js doctor</code></pre>
+        <p class="section-intro">
+          <strong data-i18n="startUsing">
+            Once you see “ready: true”, open a new chat and describe the task.
+          </strong>
+          <span data-i18n="skillSelection">
+            Hosts that match skills automatically can load ReflexRun from your request. To select it
+            explicitly in a host that supports $ mentions, try “$reflexrun archive these three
+            emails.”
+          </span>
+        </p>
+        <details class="install-options">
+          <summary data-i18n="agentsTitle">Optional instructions for AGENTS.md</summary>
+          <p class="section-intro" data-i18n="agentsIntro">
+            If your host reads AGENTS.md, you can add this rule yourself. The installer leaves
+            AGENTS.md untouched.
+          </p>
+          <pre
+            class="install-command"
+          ><code data-i18n="agentsRule">For Computer Use tasks, load the reflexrun skill if available and look for matching experience before acting. Reuse it when applicable and follow the host’s permission and verification rules.</code></pre>
+        </details>
+        <p class="section-intro" data-i18n="installAfter">
+          4. To try the sample, start the local demo and leave its terminal running.
+        </p>
+        <pre class="install-command"><code>npm run demo</code></pre>
+        <p class="section-intro">
+          <a
+            id="setup-inbox"
+            href="?portal=mail&amp;run=quickstart"
+            target="_blank"
+            rel="noopener"
+            data-i18n="openInbox"
+            >Open the practice inbox ↗</a
+          >
+          <span data-i18n="practiceStep">
+            Ask this in a new chat in the project with Computer Use available.
+          </span>
+        </p>
+        <pre
+          class="install-command"
+        ><code data-i18n="practicePrompt">Move MAIL-5101 to Archive in the practice inbox.</code></pre>
+        <p class="section-intro" data-i18n="practiceNext">
+          After the first task finishes, open a new chat and ask for the next batch.
+        </p>
+        <pre
+          class="install-command"
+        ><code data-i18n="practiceReuse">Move MAIL-5102 and MAIL-5103 to Archive.</code></pre>
+        <p class="section-intro" data-i18n="practiceMemory">
+          The Skill saves verified workflows to ~/.reflexrun/memory/ by default. Matching workflows
+          are available across projects and chats under the same local user account.
+        </p>
+        <p class="section-intro" data-i18n="importMemory">
+          To update an earlier install, run these commands in the ReflexRun source directory. For a
+          store in another project, use its absolute path.
+        </p>
+        <pre class="install-command"><code>npm run setup:codex -- --upgrade
+node dist/src/cli.js memories import --memory .reflexrun/memory</code></pre>
+      </section>
+    </main>
+    <footer>
+      <span>ReflexRun</span>
+      <a href="../../LICENSE">MIT</a>
+    </footer>
+    <template id="file-preview">
+      <main>
+        <h1>ReflexRun</h1>
+        <p class="section-intro" lang="zh-CN">
+          直接打开了源码中的 HTML 文件。请在项目目录运行 <code>npm run demo</code>，
+          再打开下方预览。
+        </p>
+        <p class="section-intro">
+          To preview the demo, run <code>npm run demo</code> from the project folder and open one of
+          the links below.
+        </p>
+        <nav class="experiment-scope" aria-label="Demo language">
+          <a href="http://127.0.0.1:4317/docs/playground/?lang=zh" lang="zh-CN">打开中文 Demo ↗</a>
+          <a href="http://127.0.0.1:4317/docs/playground/?lang=en">Open English demo ↗</a>
+        </nav>
+      </main>
+    </template>
+    <script type="module">
+      if (location.protocol === 'file:') {
+        document.body.replaceChildren(
+          document.querySelector('#file-preview').content.cloneNode(true),
+        );
+      } else {
+        await import('./app.js');
+      }
+    </script>
+  </body>
+</html>

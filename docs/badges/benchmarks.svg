@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="125" height="30" viewBox="0 0 125 30" role="img" aria-labelledby="title">
+  <title id="title">Benchmarks</title>
+  <rect x=".5" y=".5" width="124" height="29" rx="7.5" fill="#f5f0ff" stroke="#dbcdf4"/>
+  <path d="M11 9v12h14m-10-3.5V15m4 2.5v-5m4 5V10" fill="none" stroke="#6746c5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"/>
+  <text x="33" y="19.25" fill="#33215b" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="600">Benchmarks</text>
+</svg>
